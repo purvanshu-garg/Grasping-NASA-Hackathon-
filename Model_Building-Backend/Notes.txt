@@ -14,4 +14,12 @@ Heirchally to be checked
 
 
 # suggested model 
-1) Gradient boost algorithm (ensemble of decision trees)
+1) Ensemble ALgotithms ( Gradient boost algorithm (ensemble of decision trees), Random Forest , Adaboost , XGboost ) 
+
+
+
+
+# Evauluation and Training
+1) Cross validation ( making your dataset into n small data set , training on each , getting parameters and getting average performance)
+2) Evaluation params : Accuracy , recall , precision , F1 Score , AUC 
+3)
