@@ -1,4 +1,4 @@
-1) Go through two readings on the model
+1) ~Go through two readings on the model
 2) collect the data from all the three sources
 3) refine it and make it usable
 4) Now try different models you know for classification algorithm
@@ -7,19 +7,23 @@
 
 
 # Notes :
-Heirchally to be checked
-1) 
-2)(we can also try making interface where user may choose the model they want to work on and then put in the candidates) 
-3) Consider where user has less than k data points
-
 
 # suggested model 
-1) Ensemble ALgotithms ( Gradient boost algorithm (ensemble of decision trees), Random Forest , Adaboost , XGboost ) 
-
+1) Ensemble ALgotithms ( Gradient boost algorithm (ensemble of decision trees), Random Forest , Adaboost , XGboost , Stacking , Random Subsapce method, Extremely Randomized Trees ) 
+2) Neural Network
+3) 
 
 
 
 # Evauluation and Training
 1) Cross validation ( making your dataset into n small data set , training on each , getting parameters and getting average performance)
+2) Grid Search to find best parameters for the model
 2) Evaluation params : Accuracy , recall , precision , F1 Score , AUC 
 3)
+
+
+Heirchally to be checked
+1) 
+2)(we can also try making interface where user may choose the model they want to work on and then put in the candidates) 
+3) Consider where user has less than k data points
+
