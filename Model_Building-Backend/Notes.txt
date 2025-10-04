@@ -8,6 +8,11 @@
 
 # Notes :
 
+
+1) train model differently for two dataset and combine them on common parameters
+2) train model on combined dataset on common parameters
+3) train model for each dataset on common parameters and then test it for another dataset.
+
 # suggested model 
 1) Ensemble ALgotithms ( Gradient boost algorithm (ensemble of decision trees), Random Forest , Adaboost , XGboost , Stacking , Random Subsapce method, Extremely Randomized Trees ) 
 2) Neural Network
@@ -27,3 +32,30 @@ Heirchally to be checked
 2)(we can also try making interface where user may choose the model they want to work on and then put in the candidates) 
 3) Consider where user has less than k data points
 
+
+
+DATASET : 
+
+Common data points in Kepler and TESS : 
+Kepler : 
+1) Orbital period ( koi_period )
+2) Transit Duration ( koi _ duration )
+3) Transit Depth ( koi_depth )
+4) Planet radius value ( koi_prad )
+5) Planet Insolation Value ( koi_insol ) 
+6) Planetary Equilibrium Temp. ( koi_teq )
+7) Stellar Effective Temp. (koi_steff)
+8) Stellar Surface Gravity [koi_slogg]
+9) Stellar Radius [koi_srad]
+
+
+TESS :
+1) Orbital period ( pl_orbper)
+2) Transit Duration ( pl_trandurh)
+3) Transit Depth ( pl_trandep)
+4) Planet radius value ( pl_rade )
+5) Planet Insolation Value (pl_insol )
+6) Planetary Equilibrium Temp. ( pl_eqt )
+7) Stellar Effective Temp. (st_steff)
+8) Stellar Surface Gravity [st_logg]
+9) Stellar Radius [st_rad]
