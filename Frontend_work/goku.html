@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Exoplanet Prediction</title>
+
+    <!-- shared header styles (your existing file) -->
+    <link rel="stylesheet" href="stylegpt.css">
+
+    <style>
+      /* Page basics (don't center the whole page) */
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #f3f4f6;
+        margin: 0;
+      }
+
+      /* Keep space for header and allow content below it */
+      .main-content {
+        min-height: calc(100vh - 80px); /* leave room for header */
+        padding: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      /* Card */
+      .card {
+        background: white;
+        padding: 20px 22px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        width: 100%;
+        max-width: 920px;
+        max-height: calc(100vh - 140px); /* keep it inside viewport */
+        overflow: auto; /* allow scrolling if too tall */
+      }
+
+      h1 {
+        color: #0b1e36;
+        margin: 0 0 8px 0;
+        font-size: 1.4rem;
+        text-align: center;
+      }
+
+      h3 {
+        font-weight: 500;
+        font-size: 0.95rem;
+        color: #374151;
+        text-align: center;
+        margin: 0 0 18px 0;
+      }
+
+      /* Form grid: single column on small screens, two on wider */
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      @media (min-width: 760px) {
+        .form-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 14px 18px;
+        }
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .field label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #111827;
+        font-size: 0.9rem;
+      }
+
+      .field input {
+        padding: 8px 10px;
+        border-radius: 8px;
+        border: 1px solid #d1d5db;
+        font-size: 0.95rem;
+      }
+
+      .field input[type="text"] {
+        text-transform: none;
+      }
+
+      .actions {
+        margin-top: 16px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .btn-send {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .btn-send:hover { background: #1e40af; }
+
+      #result {
+        margin-top: 14px;
+        padding: 10px;
+        border-radius: 8px;
+        display: none;
+        text-align: center;
+      }
+
+      #result.success { background:#dcfce7; color:#166534; display:block; }
+      #result.error   { background:#fee2e2; color:#991b1b; display:block; }
+
+      /* give the header icons a little top spacing so they don't collide */
+      header.menu { position: relative; z-index: 10; }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header (same as homepage) -->
+    <header class="menu">
+      <div class="container">
+        <nav class="nav-bar">
+          <ul class="nav-left">
+            <li>
+              <a href="indexgpt.html">
+                <img src="home-icon.png" alt="Home" class="nav-icon">
+              </a>
+            </li>
+          </ul>
+
+          <ul class="nav-right">
+            <li>
+              <a href="code.html">
+                <img src="code-icon.png" alt="Code" class="nav-icon">
+              </a>
+            </li>
+            <li>
+              <a href="about.html">
+                <img src="about-icon.png" alt="About" class="nav-icon">
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <div class="main-content">
+      <div class="card" role="region" aria-label="Exoplanet predictor form">
+        <h1>Exoplanet Predictor</h1>
+        <h3>Enter all parameters (numerical values where required)</h3>
+
+        <div class="form-grid">
+          <!-- 1 -->
+          <div class="field">
+            <label for="notTransitLike">Not Transit Like False Positive Flag</label>
+            <input id="notTransitLike" type="number" step="any" />
+          </div>
+
+          <!-- 2 -->
+          <div class="field">
+            <label for="stellarEclipse">Stellar Eclipse False Positive Flag</label>
+            <input id="stellarEclipse" type="number" step="any" />
+          </div>
+
+          <!-- 3 -->
+          <div class="field">
+            <label for="centroidOffset">Centroid Offset False Positive Flag</label>
+            <input id="centroidOffset" type="number" step="any" />
+          </div>
+
+          <!-- 4 -->
+          <div class="field">
+            <label for="ephemerisMatch">Ephemeris Match Indicates Contamination False Positive Flag</label>
+            <input id="ephemerisMatch" type="number" step="any" />
+          </div>
+
+          <!-- 5 -->
+          <div class="field">
+            <label for="orbitalPeriod">Orbital Period [days]</label>
+            <input id="orbitalPeriod" type="number" step="any" />
+          </div>
+
+          <!-- 6 -->
+          <div class="field">
+            <label for="transitEpoch">Transit Epoch [BKJD]</label>
+            <input id="transitEpoch" type="number" step="any" />
+          </div>
+
+          <!-- 7 -->
+          <div class="field">
+            <label for="impactParameter">Impact Parameter</label>
+            <input id="impactParameter" type="number" step="any" />
+          </div>
+
+          <!-- 8 -->
+          <div class="field">
+            <label for="transitDuration">Transit Duration [hrs]</label>
+            <input id="transitDuration" type="number" step="any" />
+          </div>
+
+          <!-- 9 -->
+          <div class="field">
+            <label for="transitDepth">Transit Depth [ppm]</label>
+            <input id="transitDepth" type="number" step="any" />
+          </div>
+
+          <!-- 10 -->
+          <div class="field">
+            <label for="planetaryRadius">Planetary Radius [Earth radii]</label>
+            <input id="planetaryRadius" type="number" step="any" />
+          </div>
+
+          <!-- 11 -->
+          <div class="field">
+            <label for="equilibriumTemp">Equilibrium Temperature [K]</label>
+            <input id="equilibriumTemp" type="number" step="any" />
+          </div>
+
+          <!-- 12 -->
+          <div class="field">
+            <label for="insolationFlux">Insolation Flux [Earth flux]</label>
+            <input id="insolationFlux" type="number" step="any" />
+          </div>
+
+          <!-- 13 -->
+          <div class="field">
+            <label for="signalToNoise">Transit Signal-to-Noise</label>
+            <input id="signalToNoise" type="number" step="any" />
+          </div>
+
+          <!-- 14 -->
+          <div class="field">
+            <label for="stellarTemp">Stellar Effective Temperature [K]</label>
+            <input id="stellarTemp" type="number" step="any" />
+          </div>
+
+          <!-- 15 -->
+          <div class="field">
+            <label for="stellarGravity">Stellar Surface Gravity [log10(cm/s²)]</label>
+            <input id="stellarGravity" type="number" step="any" />
+          </div>
+
+          <!-- 16 -->
+          <div class="field">
+            <label for="stellarRadius">Stellar Radius [Solar radii]</label>
+            <input id="stellarRadius" type="number" step="any" />
+          </div>
+
+          <!-- 17 -->
+          <div class="field">
+            <label for="tfopwgDisposition">TFOPWG Disposition (CP | FP | KP | PC)</label>
+            <input id="tfopwgDisposition" type="text" />
+          </div>
+
+          <!-- 18 -->
+          <div class="field">
+            <label for="transitMidpoint">Planet Transit Midpoint Value [BJD]</label>
+            <input id="transitMidpoint" type="number" step="any" />
+          </div>
+
+          <!-- 19 -->
+          <div class="field">
+            <label for="stellarDistance">Stellar Distance [pc]</label>
+            <input id="stellarDistance" type="number" step="any" />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="submit" class="btn-send" type="button">Send Data</button>
+        </div>
+
+        <div id="result" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("submit").addEventListener("click", async () => {
+        // collect values (strings) — accept "0"
+        const inputs = {
+          notTransitLike: document.getElementById("notTransitLike").value,
+          stellarEclipse: document.getElementById("stellarEclipse").value,
+          centroidOffset: document.getElementById("centroidOffset").value,
+          ephemerisMatch: document.getElementById("ephemerisMatch").value,
+          orbitalPeriod: document.getElementById("orbitalPeriod").value,
+          transitEpoch: document.getElementById("transitEpoch").value,
+          impactParameter: document.getElementById("impactParameter").value,
+          transitDuration: document.getElementById("transitDuration").value,
+          transitDepth: document.getElementById("transitDepth").value,
+          planetaryRadius: document.getElementById("planetaryRadius").value,
+          equilibriumTemp: document.getElementById("equilibriumTemp").value,
+          insolationFlux: document.getElementById("insolationFlux").value,
+          signalToNoise: document.getElementById("signalToNoise").value,
+          stellarTemp: document.getElementById("stellarTemp").value,
+          stellarGravity: document.getElementById("stellarGravity").value,
+          stellarRadius: document.getElementById("stellarRadius").value,
+          tfopwgDisposition: document.getElementById("tfopwgDisposition").value,
+          transitMidpoint: document.getElementById("transitMidpoint").value,
+          stellarDistance: document.getElementById("stellarDistance").value,
+        };
+
+        // validate: check for empty strings only (so "0" is allowed)
+        for (let key in inputs) {
+          if (inputs[key] === "" || inputs[key] === null) {
+            alert("Please fill in all fields (field: " + key + ")");
+            return;
+          }
+        }
+
+        const resultDiv = document.getElementById("result");
+        resultDiv.className = "";
+        resultDiv.textContent = "Processing...";
+
+        try {
+          // Replace with your real backend endpoint
+          const response = await fetch("https://example.com/predict", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(inputs),
+          });
+
+          if (!response.ok) throw new Error("Server returned " + response.status);
+
+          const data = await response.json();
+          resultDiv.className = "success";
+          resultDiv.innerHTML = "<strong>Result:</strong> " + (data.prediction ?? "No prediction received");
+        } catch (err) {
+          console.error(err);
+          resultDiv.className = "error";
+          resultDiv.innerHTML = "Error connecting to the model. Please try again.";
+        }
+      });
+    </script>
+  </body>
+</html>

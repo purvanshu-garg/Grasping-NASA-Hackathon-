@@ -15,6 +15,11 @@ body {
   padding: 0.8rem 0;
 }
 
+.menu1 {
+  background-color: #0b1e36; /* dark blue */
+  padding: 0.8rem 0;
+}
+
 /* Containing nav */
 .container {
   width: 90%;
@@ -91,6 +96,82 @@ body {
   color: bisque;
   float:none;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.CSV-main{
+  margin-top: 100px;
+  color: rgb(255, 217, 170);
+  float:none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Upload Section */
+.file-choose {
+  margin: 50px auto;
+  padding: 30px;
+  background: rgba(11, 30, 54, 0.9); /* dark blue with transparency */
+  border-radius: 12px;
+  width: 60%;
+  max-width: 500px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* File input */
+.file-input {
+  display: block;
+  margin: 15px auto;
+  padding: 10px;
+  border: 2px dashed #f1c40f;
+  border-radius: 6px;
+  background-color: rgba(255,255,255,0.1);
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.file-input:hover {
+  border-color: #ffffff;
+}
+
+/* Upload Button */
+.upload-btn {
+  margin-top: 10px;
+  padding: 12px 20px;
+  background-color: #f1c40f;
+  border: none;
+  border-radius: 6px;
+  color: #0b1e36;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.upload-btn:hover {
+  background-color: #ffffff;
+  color: #0b1e36;
+  transform: scale(1.05);
+}
+
+/* Result text */
+.result-text {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #f1c40f;
+}
+
+.csvbody{
+  font-size: smaller;
+  margin-top: 100px;
+  color: rgb(255, 255, 255);
+  float:none;
+  align-items: left;
   justify-content: center;
   text-align: center;
 }
