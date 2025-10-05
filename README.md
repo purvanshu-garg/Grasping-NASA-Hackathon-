@@ -1,6 +1,6 @@
-# 🔭 Grasping-NASA-Hackathon: Exoplanet Classification
+# Grasping-NASA-Hackathon: Exoplanet Classification
 
-## 💻 Website & Usage Guide
+## Website & Usage Guide
 
 This project features a locally hosted web application for exoplanet classification.
 
@@ -21,19 +21,19 @@ To run the website:
 
 ---
 
-## 🤖 Model Performance: Ensemble Classifier
+## Model Performance: Ensemble Classifier
 
 Our classification engine is an **Ensemble Model** combining the strengths of a Neural Network and a Random Forest. The goal is to classify stellar objects as either **Exoplanet Candidates** (class **1**) or **False Positives** (class **0**).
 
-## 🚀 Model Architecture
+## Model Architecture
 
 The final model is a **Stacking or Weighted Average Ensemble** combining predictions from:
-1.  An **Optimized Random Forest Classifier** 🌳
-2.  A **Tuned Neural Network** 🧠
+1.  An **Optimized Random Forest Classifier** 
+2.  A **Tuned Neural Network** 
 
 ---
 
-## 📊 Final Performance Metrics
+## Final Performance Metrics
 
 The model's performance on the held-out test set is summarized below:
 
@@ -59,7 +59,7 @@ The model's performance on the held-out test set is summarized below:
 
 ---
 
-## ⚙️ Hyperparameters
+## Hyperparameters
 
 The optimal settings determined through cross-validation for the **Random Forest** component were:
 
