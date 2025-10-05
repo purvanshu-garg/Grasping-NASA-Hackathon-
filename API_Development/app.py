@@ -16,7 +16,8 @@ model = joblib.load("model2.pkl")
 def home():
     return render_template("indexgpt.html")
 
-def code():
+@app.route("/about")
+def about():
     return render_template("about.html")
 
 @app.route("/csv_route") 
