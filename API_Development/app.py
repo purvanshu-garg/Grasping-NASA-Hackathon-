@@ -63,8 +63,8 @@ def predict_value():
             float(data["transitDuration"]),
             float(data["transitDepth"]),
             float(data["planetaryRadius"]),
-            float(data["equilibriumTemp"]),
             float(data["insolationFlux"]),
+            float(data["equilibriumTemp"]),
             float(data["stellarTemp"]),
             float(data["stellarGravity"]),
             float(data["stellarRadius"])
