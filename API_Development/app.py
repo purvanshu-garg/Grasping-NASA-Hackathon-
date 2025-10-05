@@ -58,7 +58,8 @@ def upload_file():
         results = df.copy()
         results["Prediction"] = prediction
 
-        return render_template("results.html", tables=[results.to_html(classes="table", index=False)])
+        results_html = results.to_html(classes="table table-striped", index=False)
+        return render_template("results.html", table=results_html)
     except Exception as e:
         # Catch any error and return as JSON instead of crashing
         return jsonify({"error": str(e)}), 500
