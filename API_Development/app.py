@@ -75,7 +75,7 @@ def predict_value():
 
         prediction = model.predict(arr)
 
-        return jsonify({"prediction": prediction.tolist()[0]})
+        return render_template({"result.html": predictions=prediction})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
