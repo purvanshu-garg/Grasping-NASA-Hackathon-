@@ -52,24 +52,13 @@
     </div>
   </header>
        <div class="table">
-          <h2 style="text-align:center;">Prediction Results</h2>
-  <table>
-    <thead>
-      <tr>
-        {% for header in headers %}
-          <th>{{ header }}</th>
-        {% endfor %}
-      </tr>
-    </thead>
-    <tbody>
-      {% for row in rows %}
-        <tr>
-          {% for cell in row %}
-            <td>{{ cell }}</td>
-          {% endfor %}
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+     <h2>Prediction Results</h2>
+     <table border="1">
+         <tr><th>Row</th><th>Prediction</th></tr>
+         {% for prediction in predictions %}
+         <tr><td>{{ loop.index }}</td><td>{{ prediction }}</td></tr>
+         {% endfor %}
+     </table>
+  </div>
 </body>
 </html>
