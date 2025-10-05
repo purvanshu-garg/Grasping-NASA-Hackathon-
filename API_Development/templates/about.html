@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="stylegpt.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylegpt.css') }}">
     <style>
       /* Page basics (don't center the whole page) */
       body {
@@ -95,32 +95,34 @@
 
 <body>
     
-    <header class="menu">
-      <div class="container">
-        <nav class="nav-bar">
-          <ul class="nav-left">
-            <li>
-              <a href="indexgpt.html">
-                <img src="home-icon.png" alt="Home" class="nav-icon">
-              </a>
-            </li>
-          </ul>
+  <header class="menu">
+    <div class="container">
+      <nav class="nav-bar">
+        <!-- Left Side (Home) -->
+        <ul class="nav-left">
+          <li>
+            <a href="{{ url_for('home') }}">
+              <img src="{{ url_for('static', filename='images/home-icon.png') }}" alt="Home" class="nav-icon" >
+            </a>
+          </li>
+        </ul>
 
-          <ul class="nav-right">
-            <li>
-              <a href="https://github.com/purvanshu-garg/Grasping-NASA-Hackathon-">
-                <img src="code-icon.png" alt="Code" class="nav-icon">
-              </a>
-            </li>
-            <li>
-              <a href="about.html">
-                <img src="about-icon.png" alt="About" class="nav-icon">
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+        <!-- Right Side (Code + About) -->
+        <ul class="nav-right">
+          <li>
+            <a href="https://github.com/purvanshu-garg/Grasping-NASA-Hackathon-">
+              <img src="{{ url_for('static', filename='images/code-icon.png') }}" alt="Code" class="nav-icon" >
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('about') }}">
+              <img src="{{ url_for('static', filename='images/about-icon.png') }}" alt="About" class="nav-icon" >
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
   <h1>TEAM MEMBERS</h1>
 
