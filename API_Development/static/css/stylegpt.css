@@ -63,8 +63,9 @@ html, body {
 }
 
 body {
-  background: url("../images/sup.jpg") no-repeat center center fixed;
-  background-size: cover;  /* scales to fill */
+  background: url("../images/sup1.jpg") no-repeat center center fixed;
+  background-position: 2%,100% center;  /* push slightly right */
+
 }
 
 .button-container {
