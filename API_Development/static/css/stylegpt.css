@@ -1,0 +1,177 @@
+/* Reset browser defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar background */
+.menu {
+  background-color: #0b1e36; /* dark blue */
+  padding: 0.8rem 0;
+}
+
+.menu1 {
+  background-color: #0b1e36; /* dark blue */
+  padding: 0.8rem 0;
+}
+
+/* Containing nav */
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between; /* pushes left + right apart */
+  align-items: center;
+}
+
+/* Remove bullets + force horizontal */
+.nav-left, .nav-right {
+  list-style: none;       /* removes bullets */
+  display: flex;          /* items inline */
+  gap: 20px;              /* spacing between icons */
+}
+
+/* Icon styling */
+.nav-icon {
+  width: 28px;
+  height: 28px;
+  filter: invert(100%); /* makes black icons appear white */
+  transition: transform 0.2s ease;
+}
+
+.nav-icon:hover {
+  transform: scale(1.2);
+}
+
+/* Hero section */
+.hero img {
+  width: 100%;
+  height: auto;
+}
+
+html, body {
+  height: 100%;   /* makes body stretch full screen */
+  margin: 0;
+}
+
+body {
+  background: url("../images/sup.jpg") no-repeat center center fixed;
+  background-size: cover;  /* scales to fill */
+}
+
+.button-container {
+  margin-top: 100px;
+  display: flex;
+  gap: 15px;            /* space between buttons */
+  justify-content: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #0b1e36;  /* dark blue */
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background-color: #f1c40f;  /* gold hover effect */
+  color: black;
+  transform: scale(1.05);
+}
+
+.content{
+  margin-top: 200px;
+  color: bisque;
+  float:none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.CSV-main{
+  margin-top: 100px;
+  color: rgb(255, 217, 170);
+  float:none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Upload Section */
+.file-choose {
+  margin: 50px auto;
+  padding: 30px;
+  background: rgba(11, 30, 54, 0.9); /* dark blue with transparency */
+  border-radius: 12px;
+  width: 60%;
+  max-width: 500px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* File input */
+.file-input {
+  display: block;
+  margin: 15px auto;
+  padding: 10px;
+  border: 2px dashed #f1c40f;
+  border-radius: 6px;
+  background-color: rgba(255,255,255,0.1);
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.file-input:hover {
+  border-color: #ffffff;
+}
+
+/* Upload Button */
+.upload-btn {
+  margin-top: 10px;
+  padding: 12px 20px;
+  background-color: #f1c40f;
+  border: none;
+  border-radius: 6px;
+  color: #0b1e36;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.upload-btn:hover {
+  background-color: #ffffff;
+  color: #0b1e36;
+  transform: scale(1.05);
+}
+
+/* Result text */
+.result-text {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #f1c40f;
+}
+
+.csvbody{
+  font-size: smaller;
+  margin-top: 100px;
+  color: rgb(255, 255, 255);
+  float:none;
+  align-items: left;
+  justify-content: center;
+  text-align: center;
+}

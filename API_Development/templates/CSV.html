@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discovering Exoplanets using AI/ML</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/stylegpt.css') }}">
+
+</head>
+<body>
+  <!-- Navigation Menu -->
+  <header class="menu">
+    <div class="container">
+      <nav class="nav-bar">
+        <!-- Left Side (Home) -->
+        <ul class="nav-left">
+          <li>
+            <a href="{{ url_for('home') }}">
+              <img src="{{ url_for('static', filename='images/home-icon.png') }}" alt="Home" class="nav-icon" >
+            </a>
+          </li>
+        </ul>
+
+        <!-- Right Side (Code + About) -->
+        <ul class="nav-right">
+          <li>
+            <a href="code.html">
+              <img src="{{ url_for('static', filename='images/code-icon.png') }}" alt="Code" class="nav-icon" >
+            </a>
+          </li>
+          <li>
+            <a href="about.html">
+              <img src="{{ url_for('static', filename='images/about-icon.png') }}" alt="About" class="nav-icon" >
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class ="CSV-main">
+    <h1>Upload a CSV File</h1>
+    
+  </main>
+
+
+<div class="file-choose">
+  <h2>Upload a File for Prediction</h2>
+  <input type="file" id="fileInput" class="file-input">
+  <button onclick="uploadFile()" class="upload-btn">Upload & Predict</button>
+  <p id="result" class="result-text"></p>
+</div>
+
+
+<script>
+async function uploadFile() {
+  const fileInput = document.getElementById("fileInput");
+  const file = fileInput.files[0]; // first selected file
+
+  if (!file) {
+    alert("Please select a file!");
+    return;
+  }
+
+  // Create form data
+  const formData = new FormData();
+  formData.append("file", file);
+
+  try{
+  // Send to Flask backend
+  const response = await fetch("/upload", {
+    method: "POST",
+    body: formData
+  });
+  const data = await response.json();
+
+  if (data.error) {
+  document.getElementById("result").innerText = "Error: " + data.error;
+  } else {
+  document.getElementById("result").innerText =
+    "Predictions: " + JSON.stringify(data.predictions);
+  }  
+  } catch (error) {
+  console.error("Error:", error);
+  document.getElementById("result").innerText = "Something went wrong!";
+ }
+}
+</script>
+
+
+<div class="csvbody">
+    <p>The File Must contain the following values</p>
+    <p>Not Transit-Like False Positive Flag, Stellar Eclipse False Positive Flag, Centroid Offset False Positive Flag, TFOPWG Disposition(CP| FP| KP| PC)  </p>
+    <p>Ephemeris Match Indicates Contamination False Positive Flag, Orbital Period [days], Transit Epoch [BKJD], Impact Parameter, Planet Transit Midpoint Value[BJD]</p>
+    <p>Transit Duration [hrs], Transit Depth [ppm], Planetary Radius [Earth radii], Equilibrium Temperature [K], Insolation Flux [Earth flux, Stellar Distance[pc]</p>
+    <p>Transit Signal-to-Noise,  Stellar Effective Temperature [K], Stellar Surface Gravity [log10(cm/s**2)], Stellar Radius [Solar radii]</p>
+    </div>
+
+
+</body>
+</html>
