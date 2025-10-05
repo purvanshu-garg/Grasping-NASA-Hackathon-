@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 
 
-model = joblib.load("ensemble.pkl")
+model = joblib.load("model2.pkl")
 
 @app.route("/")   # Home route
 def home():
@@ -47,6 +47,13 @@ def upload_file():
        
         # TODO: preprocess df properly before prediction
         prediction = model.predict(df.values)
+        for i in range(len(prediction)):
+            
+            if prediction[i]==0:
+                prediction[i]="not an exo-planet"
+            elif prediction[i]==1:
+                prediction[i]="likely an exo-planet"
+
         return render_template("results.html", predictions=prediction)
     except Exception as e:
         # Catch any error and return as JSON instead of crashing
@@ -74,6 +81,13 @@ def predict_value():
         arr = np.array(values).reshape(1, -1)
 
         prediction = model.predict(arr)
+
+        for i in range(len(prediction)):
+            
+            if prediction[i]==0:
+                prediction[i]="not an exo-planet"
+            elif prediction[i]==1:
+                prediction[i]="likely an exo-planet"
 
         return jsonify({"prediction": prediction.tolist()[0]})
     except Exception as e:
