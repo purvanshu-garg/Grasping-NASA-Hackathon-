@@ -4,6 +4,34 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/stylegpt.css') }}">
 </head>
 <body>
+  <header class="menu">
+    <div class="container">
+      <nav class="nav-bar">
+        <!-- Left Side (Home) -->
+        <ul class="nav-left">
+          <li>
+            <a href="{{ url_for('home') }}">
+              <img src="{{ url_for('static', filename='images/home-icon.png') }}" alt="Home" class="nav-icon" >
+            </a>
+          </li>
+        </ul>
+
+        <!-- Right Side (Code + About) -->
+        <ul class="nav-right">
+          <li>
+            <a href="https://github.com/purvanshu-garg/Grasping-NASA-Hackathon-">
+              <img src="{{ url_for('static', filename='images/code-icon.png') }}" alt="Code" class="nav-icon" >
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('about') }}">
+              <img src="{{ url_for('static', filename='images/about-icon.png') }}" alt="About" class="nav-icon" >
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
   <h2>Prediction Results</h2>
   <table border="1">
     <tr><th>Row</th><th>Prediction</th></tr>
