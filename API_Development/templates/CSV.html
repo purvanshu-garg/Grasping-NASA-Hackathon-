@@ -49,11 +49,13 @@
   <p id="result" class="result-text"></p>
 </div>
 
+<form action="/upload" method="POST" enctype="multipart/form-data">
+  <input type="file" name="file" class="file-input">
+  <button type="submit" class="upload-btn">Upload & Predict</button>
+</form>
 
+  
 <script>
-async function uploadFile() {
-  const fileInput = document.getElementById("fileInput");
-  const file = fileInput.files[0]; // first selected file
 
   if (!file) {
     alert("Please select a file!");
