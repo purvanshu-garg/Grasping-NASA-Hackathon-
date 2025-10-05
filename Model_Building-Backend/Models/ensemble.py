@@ -17,7 +17,7 @@ from sklearn.neural_network import MLPClassifier
 
 np.random.seed(42)
 
-data=pd.read_csv(r'C:\Users\purva\OneDrive\Desktop\NASA Hackathon\Grasping-NASA-Hackathon-\Model_Building-Backend\Refined Dataset\CandidateandFP\kepler_tess_combined_dummy.csv')
+data=pd.read_csv(r'C:\Users\purva\OneDrive\Desktop\NASA Hackathon\Grasping-NASA-Hackathon-\Model_Building-Backend\Refined Dataset\CandidateandFP\kepler_tess_combined_dummy_copy.csv')
 
 X = data.drop('Classification', axis=1)
 y = data['Classification']
