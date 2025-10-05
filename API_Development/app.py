@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 
 
-model = joblib.load("model2.pkl")
+model = joblib.load("ensemble.pkl")
 
 @app.route("/")   # Home route
 def home():
