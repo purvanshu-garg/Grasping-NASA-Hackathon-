@@ -44,7 +44,7 @@ def upload_file():
     try:
         df = pd.read_csv(uploaded_file)
         
-
+       
         # TODO: preprocess df properly before prediction
         prediction = model.predict(df.values)
         prediction=pd.Series(prediction)
@@ -52,6 +52,33 @@ def upload_file():
         return render_template("results.html", predictions=prediction)
     except Exception as e:
         # Catch any error and return as JSON instead of crashing
+        return jsonify({"error": str(e)}), 500
+        
+@app.route("/predict", methods=["POST"])
+def predict_value():
+    try:
+        data = request.get_json()  # from fetch body
+
+        # Extract values in correct order (must match training!)
+        values = [
+            float(data["orbitalPeriod"]),
+            float(data["transitDuration"]),
+            float(data["transitDepth"]),
+            float(data["planetaryRadius"]),
+            float(data["equilibriumTemp"]),
+            float(data["insolationFlux"]),
+            float(data["stellarTemp"]),
+            float(data["stellarGravity"]),
+            float(data["stellarRadius"])
+        ]
+
+        # Reshape into 2D array for scikit-learn
+        arr = np.array(values).reshape(1, -1)
+
+        prediction = model.predict(arr)
+
+        return jsonify({"prediction": prediction.tolist()[0]})
+    except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
