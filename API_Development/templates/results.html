@@ -4,6 +4,9 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/stylegpt.css') }}">
 </head>
 <style>
+     predict{
+          color: white
+     }
      table{
         color: whitesmoke;
         align-content: center;
@@ -51,7 +54,9 @@
       </nav>
     </div>
   </header>
+     <div class="predict">
      <h2>Prediction Results</h2>
+     </div>
         {{ table|safe }}
 </body>
 </html>
