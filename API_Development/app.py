@@ -55,7 +55,10 @@ def upload_file():
             elif prediction[i]=='1':
                 prediction[i]="likely an exo-planet"
 
-        return render_template("results.html", predictions=prediction)
+        results = df.copy()
+        results["Prediction"] = prediction
+
+        return render_template("results.html", tables=[results.to_html(classes="table", index=False)])
     except Exception as e:
         # Catch any error and return as JSON instead of crashing
         return jsonify({"error": str(e)}), 500
