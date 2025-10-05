@@ -54,10 +54,7 @@
        <div class="table">
      <h2>Prediction Results</h2>
      <table border="1">
-         <tr><th>Row</th><th>Prediction</th></tr>
-         {% for prediction in predictions %}
-         <tr><td>{{ loop.index }}</td><td>{{ prediction }}</td></tr>
-         {% endfor %}
+        {{ tables|safe }}
      </table>
   </div>
 </body>
