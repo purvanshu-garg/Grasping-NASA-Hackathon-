@@ -48,8 +48,7 @@ def upload_file():
         # TODO: preprocess df properly before prediction
         prediction = model.predict(df.values)
 
-        return jsonify({"predictions": prediction.tolist()})
-
+        return render_template("results.html", predictions=prediction)
     except Exception as e:
         # Catch any error and return as JSON instead of crashing
         return jsonify({"error": str(e)}), 500
