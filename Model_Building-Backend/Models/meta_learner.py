@@ -23,8 +23,8 @@ def build_nn(input_shape, hidden_layers=2, units=64, dropout_rate=0.2):
 
 def train_and_save_models():
     # Load data
-    data_1 = pd.read_csv('kepler_dataset_refined_dummy.csv')
-    data_2 = pd.read_csv('TESS_dataset_refined_dummy.csv')
+    data_1 = pd.read_csv(r'C:\Users\purva\OneDrive\Desktop\NASA Hackathon\Grasping-NASA-Hackathon-\Model_Building-Backend\Refined Dataset\CandidateandFP\kepler_dataset_refined_dummy.csv')
+    data_2 = pd.read_csv(r'C:\Users\purva\OneDrive\Desktop\NASA Hackathon\Grasping-NASA-Hackathon-\Model_Building-Backend\Refined Dataset\CandidateandFP\TESS_dataset_refined_dummy.csv')
 
     data_1_x = data_1.drop(columns='Classification')
     data_2_x = data_2.drop(columns='Classification')
