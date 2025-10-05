@@ -54,16 +54,24 @@
   <div class="table">
      <h2>Prediction Results</h2>
      <table border="1">
-      <tbody>
-        {% for row in results %}
-          <tr>
-            {% for cell in row %}
-              <td>{{ cell }}</td>
-            {% endfor %}
-          </tr>
-        {% endfor %}
-      </tbody>
+       <thead>
+         <tr>
+           {% for header in headers %}
+             <th>{{ header }}</th>
+           {% endfor %}
+         </tr>
+       </thead>
+       <tbody>
+         {% for row in results %}
+           <tr>
+             {% for cell in row %}
+               <td>{{ cell }}</td>
+             {% endfor %}
+           </tr>
+         {% endfor %}
+       </tbody>
      </table>
+
 
   </div>
 </body>
