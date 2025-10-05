@@ -43,16 +43,11 @@
 
 
 <div class="file-choose">
-  <h2>Upload a File for Prediction</h2>
-  <input type="file" id="fileInput" class="file-input">
-  <button onclick="uploadFile()" class="upload-btn">Upload & Predict</button>
-  <p id="result" class="result-text"></p>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" class="file-input">
+    <button type="submit" class="upload-btn">Upload & Predict</button>
+  </form>
 </div>
-
-<form action="/upload" method="POST" enctype="multipart/form-data">
-  <input type="file" name="file" class="file-input">
-  <button type="submit" class="upload-btn">Upload & Predict</button>
-</form>
 
   
 <script>
