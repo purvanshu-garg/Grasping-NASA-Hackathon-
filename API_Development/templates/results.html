@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Results</title></head>
+<body>
+  <h2>Prediction Results</h2>
+  <table border="1">
+    <tr><th>Row</th><th>Prediction</th></tr>
+    {% for pred in predictions %}
+      <tr><td>{{ loop.index }}</td><td>{{ pred }}</td></tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
