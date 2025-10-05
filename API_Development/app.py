@@ -47,7 +47,7 @@ def upload_file():
 
         # TODO: preprocess df properly before prediction
         prediction = model.predict(df.values)
-
+        prediction= np.concatenate((prediction,prediction),axis=1)
         return render_template("results.html", predictions=prediction)
     except Exception as e:
         # Catch any error and return as JSON instead of crashing
